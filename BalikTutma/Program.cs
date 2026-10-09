@@ -3,6 +3,7 @@ Console.WriteLine(" balık tutmak için enter bas\n ");
 
 List<string> baliklar = new List<string>();
 List<string> tutulanBaliklar = new List<string>();
+string enBuyukBalik = "";
 
 baliklar.Add("hamsi");                       
 baliklar.Add("levrek");
@@ -18,6 +19,7 @@ foreach (string balik in baliklar) {
 
 int[] puanlar = { 1, 3, 10, 30 };
 int toplamPuan = 0;
+int enBuyukPuan = 0;
 Random rnd = new Random();
 ConsoleKeyInfo tus = Console.ReadKey();
 
@@ -30,8 +32,15 @@ while (tus.Key == ConsoleKey.Enter)
     Console.WriteLine("Balık tutdun! ");
     Console.WriteLine($"balık: {baliklar[indeks]} ,  paun: {puanlar[indeks]}");
     Console.WriteLine("\ndevam etmek için enter çıkmak için herhangi bir tuş\n");
+    if (puanlar[indeks] > enBuyukPuan)
+    {
+
+        enBuyukPuan = puanlar[indeks];
+        enBuyukBalik = baliklar[indeks];
+    }
     tutulanBaliklar.Add(baliklar[indeks]);
     toplamPuan += puanlar[indeks];
+    
     
     tus = Console.ReadKey();
 }
@@ -50,5 +59,8 @@ else
     {
         Console.WriteLine(balik);
     }
-    Console.WriteLine($"Tutulan balik: {tutulanBaliklar.Count} , toplam puan : {toplamPuan}");
+    Console.WriteLine($"\nTutulan balik: {tutulanBaliklar.Count} , toplam puan : {toplamPuan}");
+    Console.Write($"En buyuk balık : {enBuyukBalik}");
 }
+
+
