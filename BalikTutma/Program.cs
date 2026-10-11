@@ -1,17 +1,17 @@
-﻿Console.WriteLine("----------Balık Tutma Oyunu----------");
-Console.WriteLine(" balık tutmak için enter bas\n ");
-
+﻿Console.WriteLine("-----------Console Fishing Game-----------");
+Console.WriteLine(" ----------Press Enter button For play---------- ");
+Console.WriteLine("-----------Press any button for exit-----------\n");
 List<string> baliklar = new List<string>();
-List<string> tutulanBaliklar = new List<string>();
+List<string> catchedFih = new List<string>();
 Dictionary<string, int> fishNamePoints = new Dictionary<string, int>();
-string enBuyukBalik = "";
+string biggerFih = "";
 
-fishNamePoints.Add("hamsi", 1);
-fishNamePoints.Add("levrek", 4);
-fishNamePoints.Add("köpekbalıgı", 10);
+fishNamePoints.Add("anchovy", 1);
+fishNamePoints.Add("sea bass", 4);
+fishNamePoints.Add("Shark", 10);
 fishNamePoints.Add("Sea Monster", 30);
 
-Console.WriteLine("  Denizde olan balıklarımız: ");
+Console.WriteLine("       Fish in the sea: ");
 foreach (var balik in fishNamePoints)
 {
 
@@ -19,15 +19,16 @@ foreach (var balik in fishNamePoints)
     Console.WriteLine(balik);
 
     baliklar.Add(balik.Key);
+   
 
 }
 
 
 
 
-int[] puanlar = { 1, 3, 10, 30 };
-int toplamPuan = 0;
-int enBuyukPuan = 0;
+
+int totalPoint = 0;
+int biggerFihPoint = 0;
 Random rnd = new Random();
 ConsoleKeyInfo tus = Console.ReadKey();
 
@@ -36,39 +37,41 @@ while (tus.Key == ConsoleKey.Enter)
 {
 
     int indeks = rnd.Next(baliklar.Count);
+    string myFih = baliklar[indeks];
+    int myPoint= fishNamePoints[myFih];
 
     Console.WriteLine("Balık tutdun! ");
-    Console.WriteLine($"balık: {baliklar[indeks]} ,  paun: {puanlar[indeks]}");
+    Console.WriteLine($"balık: {myFih} ,  paun: {myPoint}");
     Console.WriteLine("\ndevam etmek için enter çıkmak için herhangi bir tuş\n");
-    if (puanlar[indeks] > enBuyukPuan)
+    if (myPoint > biggerFihPoint)
     {
 
-        enBuyukPuan = puanlar[indeks];
-        enBuyukBalik = baliklar[indeks];
+        biggerFihPoint= myPoint;
+        biggerFih = myFih;
     }
-    tutulanBaliklar.Add(baliklar[indeks]);
-    toplamPuan += puanlar[indeks];
+    catchedFih.Add(myFih);
+    totalPoint += myPoint;
     
     
     tus = Console.ReadKey();
 }
-Console.WriteLine("\n--------Oyundan çıktın--------\n");
+Console.WriteLine("\n--------Exit--------\n");
 
 
-if (tutulanBaliklar.Count == 0)
+if (catchedFih.Count == 0)
 {
     Console.WriteLine("     Balık tutamadın ");
 }
 
 else
 {
-    Console.WriteLine("     Tutuğun Balıklar!!:     ");
-    foreach (string balik in tutulanBaliklar)
+    Console.WriteLine("     Your catches:     ");
+    foreach (string balik in catchedFih)
     {
         Console.WriteLine(balik);
     }
-    Console.WriteLine($"\nTutulan balik: {tutulanBaliklar.Count} , toplam puan : {toplamPuan}");
-    Console.Write($"En buyuk balık : {enBuyukBalik}");
+    Console.WriteLine($"\nTutulan balik: {catchedFih.Count} , toplam puan : {totalPoint}");
+    Console.Write($"En buyuk balık : {biggerFih}");
 }
 
 
