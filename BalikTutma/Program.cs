@@ -40,7 +40,7 @@ while (tus.Key == ConsoleKey.Enter)
     string myFih = baliklar[indeks];
     int myPoint= fishNamePoints[myFih];
 
-    Console.WriteLine("Balık tutdun! ");
+    Console.WriteLine("Catched! ");
     Console.WriteLine($"balık: {myFih} ,  paun: {myPoint}");
     Console.WriteLine("\ndevam etmek için enter çıkmak için herhangi bir tuş\n");
     if (myPoint > biggerFihPoint)
