@@ -71,7 +71,15 @@ else
         Console.WriteLine(balik);
     }
     Console.WriteLine($"\nTutulan balik: {catchedFih.Count} , toplam puan : {totalPoint}");
-    Console.Write($"En buyuk balık : {biggerFih}");
+    Console.Write($"En buyuk balık : {biggerFih}\n\n\n\n");
 }
-
-
+Fish fish1 = new Fish();
+fish1.name = "mutation Shark";
+fish1.point = 50;
+Console.WriteLine(fish1.name);
+Console.WriteLine(fish1.point);
+class Fish
+{
+   public string name = "";
+    public int point = 0;
+}
