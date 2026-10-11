@@ -3,19 +3,27 @@ Console.WriteLine(" balık tutmak için enter bas\n ");
 
 List<string> baliklar = new List<string>();
 List<string> tutulanBaliklar = new List<string>();
+Dictionary<string, int> fishNamePoints = new Dictionary<string, int>();
 string enBuyukBalik = "";
 
-baliklar.Add("hamsi");                       
-baliklar.Add("levrek");
-baliklar.Add("köpekbalıgı");
-baliklar.Add("Sea Monster");
-
+fishNamePoints.Add("hamsi", 1);
+fishNamePoints.Add("levrek", 4);
+fishNamePoints.Add("köpekbalıgı", 10);
+fishNamePoints.Add("Sea Monster", 30);
 
 Console.WriteLine("  Denizde olan balıklarımız: ");
-foreach (string balik in baliklar) {
+foreach (var balik in fishNamePoints)
+{
+
     Console.Write("       ");
     Console.WriteLine(balik);
+
+    baliklar.Add(balik.Key);
+
 }
+
+
+
 
 int[] puanlar = { 1, 3, 10, 30 };
 int toplamPuan = 0;
