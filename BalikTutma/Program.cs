@@ -60,7 +60,7 @@ Console.WriteLine("\n--------Exit--------\n");
 
 if (catchedFih.Count == 0)
 {
-    Console.WriteLine("     Balık tutamadın ");
+    Console.WriteLine("     Balık tutamadın \n");
 }
 
 else
@@ -73,13 +73,19 @@ else
     Console.WriteLine($"\nTutulan balik: {catchedFih.Count} , toplam puan : {totalPoint}");
     Console.Write($"En buyuk balık : {biggerFih}\n\n\n\n");
 }
-Fish fish1 = new Fish();
-fish1.name = "mutation Shark";
-fish1.point = 50;
-Console.WriteLine(fish1.name);
+Fish fish1 = new Fish("Mutation Shark",50);
+
+Console.Write(fish1.name);
+Console.Write(" ");
 Console.WriteLine(fish1.point);
 class Fish
 {
-   public string name = "";
+    public string name = "";
     public int point = 0;
+
+    public Fish(string name, int point)  
+    {
+        this.name = name;              
+        this.point = point;               
+    }
 }
