@@ -18,7 +18,7 @@ namespace BalikTutma
             this.point = point;
             this.rarity = rarity;
         }
-
+        
         public void Describe()
         {
             Console.WriteLine($" Fish: ({name}) , Point: ({point}) Rare : ({rarity})");

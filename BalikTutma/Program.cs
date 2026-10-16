@@ -67,7 +67,7 @@ else
     }
 
 
-    biggestFish.Describe(); // bu method varken tekrar yazmak saçma oluyormuş
+    biggestFish.Describe(); 
     Console.WriteLine($" Total Point = {totalPoint}");
 
 }
