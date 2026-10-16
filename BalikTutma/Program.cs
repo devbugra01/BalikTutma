@@ -22,34 +22,35 @@ foreach (Fish fish in Fishes)
 
 Random rnd = new Random();
 Fish biggestFish = new Fish("", 0);
-int Count = 0;
+
 int totalPoint = 0;
 ConsoleKeyInfo button = Console.ReadKey();
 
 while (button.Key == ConsoleKey.Enter)
 {
     int indeks = rnd.Next(Fishes.Count);
-    
-    Count++;
+
+    Fish myFish= Fishes[indeks];
+
 
 
     Console.WriteLine("\nCaught!");
-    Console.WriteLine($" Fish: {Fishes[indeks].name} Point: {Fishes[indeks].point}");
+    Console.WriteLine($" Fish: ({myFish.name}) , Point: ({myFish.point})");
 
-    caughtFishes.Add(Fishes[indeks].name);
+    caughtFishes.Add(myFish.name);
 
-    if (Fishes[indeks].point > biggestFish.point)
+    if (myFish.point > biggestFish.point)
     {
-        biggestFish.point = Fishes[indeks].point;
-        biggestFish.name = Fishes[indeks].name;
+        biggestFish.point = myFish.point;
+        biggestFish.name = myFish.name;
 
     }
-    totalPoint += Fishes[indeks].point;
+    totalPoint += myFish.point;
 
     button = Console.ReadKey ();
 }
 
-if (Count == 0)
+if (caughtFishes.Count == 0)
 {
     Console.WriteLine("\n-----You didn't catch any fish-----");
     Environment.Exit(0);
@@ -64,8 +65,8 @@ foreach (string fish in caughtFishes)
 }
 
 
-Console.WriteLine($"\n\nBiggest Fish!: ({biggestFish.name}) Point: ({biggestFish.point})");
-Console.WriteLine($"Total Point = {totalPoint}");
+Console.Write($"\n\nBiggest Fish!: ({biggestFish.name}) , Point: ({biggestFish.point})");
+Console.WriteLine($" Total Point = {totalPoint}");
 
 
 
