@@ -1,75 +1,73 @@
 ﻿using BalikTutma;
-using System.Drawing;
+
 
 Console.WriteLine("");
 Console.WriteLine(" -----Console Fishing Game(Hand made)-----\n");
 Console.WriteLine("      Play:Enter   Exit:Any button\n");
 
-List<Fish> Fishes = new List<Fish>();
-List<string> caughtFishes = new List<string>();
+List<Fish> fishes = new List<Fish>();
+List<Fish> caughtFishes = new List<Fish>();
 
-Fishes.Add(new Fish("anchovy", 1));
-Fishes.Add(new Fish("sardine", 3));
-Fishes.Add(new Fish("Mackerel", 5));
-Fishes.Add(new Fish("Sea Bass", 8));
-Fishes.Add(new Fish("Tuna", 18));
+fishes.Add(new Fish("anchovy", 1,"Common"));
+fishes.Add(new Fish("sardine", 3,"Common"));
+fishes.Add(new Fish("Mackerel", 5,"Rare"));
+fishes.Add(new Fish("Sea Bass", 8,"Rare"));
+fishes.Add(new Fish("Tuna", 18, "Epic"));
+fishes.Add(new Fish("Shark", 30, "Legendary"));
 
 Console.WriteLine(" Fish in the Ocean:");
-foreach (Fish fish in Fishes)
+foreach (Fish fish in fishes)
 {
     fish.Describe();
 }
 
 Random rnd = new Random();
-Fish biggestFish = new Fish("", 0);
+Fish biggestFish = new Fish("", 0,"");
 
 int totalPoint = 0;
 ConsoleKeyInfo button = Console.ReadKey();
 
 while (button.Key == ConsoleKey.Enter)
 {
-    int indeks = rnd.Next(Fishes.Count);
+    int indeks = rnd.Next(fishes.Count);
 
-    Fish myFish= Fishes[indeks];
+    Fish myFish= fishes[indeks];
 
 
 
     Console.WriteLine("\nCaught!");
-    Console.WriteLine($" Fish: ({myFish.name}) , Point: ({myFish.point})");
+    myFish.Describe(); // I use Fish class describe method
 
-    caughtFishes.Add(myFish.name);
+    caughtFishes.Add(myFish);
 
     if (myFish.point > biggestFish.point)
     {
-        biggestFish.point = myFish.point;
-        biggestFish.name = myFish.name;
+        biggestFish = myFish;
+        
 
     }
     totalPoint += myFish.point;
 
     button = Console.ReadKey ();
 }
+Console.WriteLine("\n -----Game Over-----");
 
 if (caughtFishes.Count == 0)
 {
     Console.WriteLine("\n-----You didn't catch any fish-----");
-    Environment.Exit(0);
 }
-Console.WriteLine("\n -----Game Over-----");
-Console.WriteLine("      Your catches:     ");
-foreach (string fish in caughtFishes)
+else
 {
-    Console.Write(" ");
-    Console.Write(fish);
-    Console.Write(",");
+    Console.WriteLine("      Your catches:     ");
+    foreach (Fish fish in caughtFishes)
+    {
+        Console.Write(" ");
+        Console.Write(fish.name + fish.rarity);
+        Console.Write(",");
+    }
+
+
+    biggestFish.Describe(); // bu method varken tekrar yazmak saçma oluyormuş
+    Console.WriteLine($" Total Point = {totalPoint}");
+
 }
-
-
-Console.Write($"\n\nBiggest Fish!: ({biggestFish.name}) , Point: ({biggestFish.point})");
-Console.WriteLine($" Total Point = {totalPoint}");
-
-
-
-
-
-    
