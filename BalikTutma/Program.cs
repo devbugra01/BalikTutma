@@ -8,12 +8,12 @@ Console.WriteLine("      Play:Enter   Exit:Any button\n");
 List<Fish> fishes = new List<Fish>();
 List<Fish> caughtFishes = new List<Fish>();
 
-fishes.Add(new Fish("anchovy", 1,"Common"));
-fishes.Add(new Fish("sardine", 3,"Common"));
-fishes.Add(new Fish("Mackerel", 5,"Rare"));
-fishes.Add(new Fish("Sea Bass", 8,"Rare"));
-fishes.Add(new Fish("Tuna", 18, "Epic"));
-fishes.Add(new Fish("Shark", 30, "Legendary"));
+fishes.Add(new Fish("anchovy", 1,Rarity.Common));
+fishes.Add(new Fish("sardine", 3, Rarity.Common));
+fishes.Add(new Fish("Mackerel", 5, Rarity.Rare));
+fishes.Add(new Fish("Sea Bass", 8, Rarity.Rare));
+fishes.Add(new Fish("Tuna", 18, Rarity.Epic));
+fishes.Add(new Fish("Shark", 30, Rarity.Legendary));
 
 Console.WriteLine(" Fish in the Ocean:");
 foreach (Fish fish in fishes)
@@ -22,7 +22,7 @@ foreach (Fish fish in fishes)
 }
 
 Random rnd = new Random();
-Fish biggestFish = new Fish("", 0,"");
+Fish biggestFish = new Fish("", 0, Rarity.Common);
 
 int totalPoint = 0;
 ConsoleKeyInfo button = Console.ReadKey();
